@@ -1,0 +1,33 @@
+{
+	"name" : "mylk/chronis",
+	"description" : "PHP crontab generator, using natural language expressions",
+	"type" : "project",
+	"keywords" : [
+		"cron",
+		"crontab",
+		"generator",
+		"generate"
+	],
+	"homepage" : "http://github.com/mylk/chronis",
+	"license" : "GPL-2.0",
+	"support" : {
+		"issues" : "https://github.com/mylk/chronis/issues"
+	},
+	"authors" : [{
+			"name" : "Kostas Milonas",
+			"email" : "milonas.ko@gmail.com"
+		}
+	],
+	"require" : {
+		"symfony/console" : "^4.3",
+		"bentools/natural-cron-expression" : "^1.0"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "8.2.*"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Chronis\\" : "src/"
+		}
+	}
+}
