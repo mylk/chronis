@@ -1,0 +1,16 @@
+parameters:
+
+services:
+    config_parser:
+        class: Chronis\Service\ConfigurationParserService
+
+    cron_converter:
+        class: Chronis\Service\CronConverterService
+        arguments:
+            - "@expression_converter"
+
+    crontab_generator:
+        class: Chronis\Service\CrontabGeneratorService
+
+    expression_converter:
+        class: BenTools\NaturalCronExpression\NaturalCronExpressionParser

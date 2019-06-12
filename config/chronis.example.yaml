@@ -1,0 +1,13 @@
+version: "1.0"
+
+jobs:
+    foo:
+        type: "cron"
+        expression: "Every minute"
+        command: "ls -la /tmp"
+        description: "Lists /tmp"
+    bar:
+        type: "cron"
+        expression: "Every day at 10 am"
+        command: "ls -la ~"
+        description: "Lists home directory"
