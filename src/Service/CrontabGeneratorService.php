@@ -4,13 +4,24 @@ namespace Chronis\Service;
 
 class CrontabGeneratorService
 {
-    public function generate($jobs)
+    private $configParser;
+    private $expressionConverter;
+
+    public function __construct($configParser, $expressionConverter)
     {
-        $output = "";
+        $this->configParser = $configParser;
+        $this->expressionConverter = $expressionConverter;
+    }
+
+    public function generate()
+    {
+        $jobs = $this->configParser->parse();
+
+        $cronJobs = [];
         foreach ($jobs as $job) {
-            $output .= $job->getExpression() . " " . $job->getCommand() . "\n";
+            $cronJobs[] = $this->expressionConverter->convert($job);
         }
 
-        return $output;
+        return $cronJobs;
     }
 }

@@ -4,7 +4,7 @@ namespace Chronis\Service;
 
 use Chronis\Model\Cron\Job;
 
-class CronConverterService
+class ExpressionConverterService
 {
     private $expressionParser = null;
 

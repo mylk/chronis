@@ -12,9 +12,9 @@ $containerBuilder = new ContainerBuilder();
 $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__));
 $loader->load("config/services.yaml");
 
-$generate = new Chronis\Command\GenerateCommand();
-$generate->setContainer($containerBuilder);
+$dump = new Chronis\Command\DumpCommand();
+$dump->setContainer($containerBuilder);
 
-$app = new Application("A crontab generator using natural language.", "0.1");
-$app->add($generate);
+$app = new Application("A crontab generator using natural language expressions.", "0.2.0");
+$app->add($dump);
 $app->run();

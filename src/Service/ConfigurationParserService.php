@@ -14,7 +14,7 @@ class ConfigurationParserService
         try {
             $data = Yaml::parseFile(__DIR__ . "/../../config/chronis.example.yaml");
         } catch (ParseException $exception) {
-            printf("Unable to parse the YAML string: %s", $exception->getMessage());
+            printf("Unable to parse the YAML file: %s", $exception->getMessage());
         }
 
         $jobs = [];
