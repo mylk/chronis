@@ -13,9 +13,9 @@ class CrontabGeneratorService
         $this->expressionConverter = $expressionConverter;
     }
 
-    public function generate()
+    public function generate($configPath)
     {
-        $jobs = $this->configParser->parse();
+        $jobs = $this->configParser->parse($configPath);
 
         $cronJobs = [];
         foreach ($jobs as $job) {

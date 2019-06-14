@@ -2,20 +2,14 @@
 
 namespace Chronis\Service;
 
-use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Yaml;
-
 use Chronis\Model\Configuration\Job;
 
 class ConfigurationParserService
 {
-    public function parse()
+    public function parse($configPath)
     {
-        try {
-            $data = Yaml::parseFile(__DIR__ . "/../../config/chronis.example.yaml");
-        } catch (ParseException $exception) {
-            printf("Unable to parse the YAML file: %s", $exception->getMessage());
-        }
+        $data = Yaml::parseFile($configPath);
 
         $jobs = [];
         foreach ($data["jobs"] as $jobName => $jobDetails) {
