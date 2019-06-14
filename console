@@ -14,9 +14,12 @@ $loader->load("config/services.yaml");
 
 $dump = new Chronis\Command\DumpCommand();
 $dump->setContainer($containerBuilder);
+$export = new Chronis\Command\ExportCommand();
+$export->setContainer($containerBuilder);
 
 $version = $containerBuilder->getParameter("version");
 
 $app = new Application("A crontab generator using natural language expressions.", $version);
 $app->add($dump);
+$app->add($export);
 $app->run();
