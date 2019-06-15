@@ -2,7 +2,7 @@
 
 namespace Chronis\Service;
 
-use Chronis\Model\Cron\Job;
+use Chronis\Model\CronJob;
 
 class ExpressionConverterService
 {
@@ -18,7 +18,7 @@ class ExpressionConverterService
     {
         $expression = $this->expressionParser::fromString($job->getExpression());
 
-        $cronJob = new Job();
+        $cronJob = new CronJob();
         $cronJob->setCommand($job->getCommand())
             ->setDescription($job->getDescription())
             ->setExpression($expression)

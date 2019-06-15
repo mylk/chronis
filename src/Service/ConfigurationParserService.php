@@ -3,7 +3,7 @@
 namespace Chronis\Service;
 
 use Symfony\Component\Yaml\Yaml;
-use Chronis\Model\Configuration\Job;
+use Chronis\Model\ConfigurationJob;
 
 class ConfigurationParserService
 {
@@ -13,7 +13,7 @@ class ConfigurationParserService
 
         $jobs = [];
         foreach ($data["jobs"] as $jobName => $jobDetails) {
-            $jobObject = new Job();
+            $jobObject = new ConfigurationJob();
             $jobObject->setName($jobName)
                 ->setDescription($jobDetails["description"])
                 ->setExpression($jobDetails["expression"])

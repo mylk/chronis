@@ -1,8 +1,8 @@
 <?php
 
-namespace Chronis\Model\Cron;
+namespace Chronis\Model;
 
-class Job
+abstract class Job
 {
     private $command = null;
     private $description = null;
