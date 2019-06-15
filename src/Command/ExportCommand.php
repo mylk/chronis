@@ -27,11 +27,17 @@ class ExportCommand extends ContainerAwareCommand
         }
 
         $crontabGenerator = $this->getContainer()->get("crontab_generator");
+        $template = $this->getContainer()->get("template");
 
         $jobs = $crontabGenerator->generate($configPath);
         $data = "";
         foreach ($jobs as $job) {
-            $data .= $job->getExpression() . " " . $job->getCommand() . "\n";
+            $data .= $template->render("cron", [
+                "%name" => $job->getName(),
+                "%description" => $job->getDescription(),
+                "%expression" => $job->getExpression(),
+                "%command" => $job->getCommand()
+            ]);
         }
 
         file_put_contents($outputPath, $data);

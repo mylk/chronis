@@ -25,10 +25,18 @@ class DumpCommand extends ContainerAwareCommand
         }
 
         $crontabGenerator = $this->getContainer()->get("crontab_generator");
+        $template = $this->getContainer()->get("template");
 
         $jobs = $crontabGenerator->generate($configPath);
         foreach ($jobs as $job) {
-            $output->writeln($job->getExpression() . " " . $job->getCommand());
+            $output->write(
+                $template->render("cron", [
+                    "%name" => $job->getName(),
+                    "%description" => $job->getDescription(),
+                    "%expression" => $job->getExpression(),
+                    "%command" => $job->getCommand()
+                ])
+            );
         }
     }
 }

@@ -20,7 +20,9 @@ class ExpressionConverterService
 
         $cronJob = new Job();
         $cronJob->setCommand($job->getCommand())
-            ->setExpression($expression);
+            ->setDescription($job->getDescription())
+            ->setExpression($expression)
+            ->setName($job->getName());
 
         return $cronJob;
     }
