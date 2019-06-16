@@ -12,7 +12,7 @@ class DumpCommandTest extends TestCase
 {
     private static $dumpCommand = null;
 
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         $containerBuilder = new ContainerBuilder();
         $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__));
@@ -22,7 +22,7 @@ class DumpCommandTest extends TestCase
         self::$dumpCommand->setContainer($containerBuilder);
     }
 
-    public function testExecuteThrowsExceptionWhenConfigOptionNotSet() : void
+    public function testExecuteThrowsExceptionWhenConfigOptionNotSet(): void
     {
         $this->expectException(InvalidCommandInputException::class);
         $this->expectExceptionMessage("Option --config is missing.");
@@ -31,7 +31,7 @@ class DumpCommandTest extends TestCase
         $commandTester->execute([]);
     }
 
-    public function testExecuteDumpsCrontab() : void
+    public function testExecuteDumpsCrontab(): void
     {
         $commandTester = new CommandTester(self::$dumpCommand);
         $commandTester->execute([

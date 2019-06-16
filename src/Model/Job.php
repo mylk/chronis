@@ -9,48 +9,48 @@ abstract class Job
     private $expression = null;
     private $name = null;
 
-    public function getCommand()
+    public function getCommand(): ?string
     {
         return $this->command;
     }
 
-    public function setCommand($command)
+    public function setCommand(string $command): Job
     {
         $this->command = $command;
 
         return $this;
     }
 
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription($description)
+    public function setDescription(string $description): Job
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getExpression()
+    public function getExpression(): ?string
     {
         return $this->expression;
     }
 
-    public function setExpression($expression)
+    public function setExpression(string $expression): Job
     {
         $this->expression = $expression;
 
         return $this;
     }
 
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName(string $name): Job
     {
         $this->name = $name;
 

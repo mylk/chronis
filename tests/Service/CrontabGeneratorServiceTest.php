@@ -11,14 +11,14 @@ class CrontabGeneratorServiceTest extends TestCase
 {
     private static $generator = null;
 
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         $configurationParser = new ConfigurationParserService();
         $expressionConverter = new ExpressionConverterService(new NaturalCronExpressionParser());
         self::$generator = new CrontabGeneratorService($configurationParser, $expressionConverter);
     }
 
-    public function testGeneratorReturnsCronJobs() : void
+    public function testGeneratorReturnsCronJobs(): void
     {
         $jobs = self::$generator->generate(__DIR__ . "/../../config/chronis.example.yaml");
 

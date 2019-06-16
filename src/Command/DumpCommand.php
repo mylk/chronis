@@ -9,7 +9,7 @@ use Chronis\Exception\InvalidCommandInputException;
 
 class DumpCommand extends ContainerAwareCommand
 {
-    public function configure()
+    public function configure(): void
     {
         $this->setName("dump")
             ->setDescription("Dumps the crontab file")
@@ -17,7 +17,7 @@ class DumpCommand extends ContainerAwareCommand
             ->addOption("config", "c", InputOption::VALUE_REQUIRED, "The configuration file input.", null);
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): void
     {
         $configPath = $input->getOption("config");
         if (!$configPath) {

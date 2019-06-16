@@ -9,19 +9,19 @@ class ConfigurationParserServiceTest extends TestCase
 {
     private static $parser = null;
 
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         self::$parser = new ConfigurationParserService();
     }
 
-    public function testParseThrowsExceptionWhenConfigurationFileNotFound() : void
+    public function testParseThrowsExceptionWhenConfigurationFileNotFound(): void
     {
         $this->expectException(ParseException::class);
 
         self::$parser->parse("foo");
     }
 
-    public function testParseReturnsConfigurationJobs() : void
+    public function testParseReturnsConfigurationJobs(): void
     {
         $jobs = self::$parser->parse(__DIR__ . "/../../config/chronis.example.yaml");
 

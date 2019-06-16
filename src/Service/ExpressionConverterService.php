@@ -2,20 +2,22 @@
 
 namespace Chronis\Service;
 
+use BenTools\NaturalCronExpression\NaturalCronExpressionParser;
 use BenTools\NaturalCronExpression\ParserException;
 use Chronis\Exception\ExpressionParseException;
+use Chronis\Model\ConfigurationJob;
 use Chronis\Model\CronJob;
 
 class ExpressionConverterService
 {
     private $expressionParser = null;
 
-    public function __construct($expressionParser)
+    public function __construct(NaturalCronExpressionParser $expressionParser)
     {
         $this->expressionParser = $expressionParser;
     }
 
-    public function convert($job)
+    public function convert(ConfigurationJob $job): CronJob
     {
         try {
             $expression = $this->expressionParser::fromString($job->getExpression());

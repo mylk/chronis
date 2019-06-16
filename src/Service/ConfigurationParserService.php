@@ -7,7 +7,7 @@ use Chronis\Model\ConfigurationJob;
 
 class ConfigurationParserService
 {
-    public function parse($configPath)
+    public function parse(string $configPath): array
     {
         $data = Yaml::parseFile($configPath);
 

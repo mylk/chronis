@@ -3,19 +3,20 @@
 namespace Chronis\Command;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 abstract class ContainerAwareCommand extends Command
 {
     private $container = null;
 
-    public function setContainer($container)
+    public function setContainer(ContainerBuilder $container): ContainerAwareCommand
     {
         $this->container = $container;
 
         return $this;
     }
 
-    public function getContainer()
+    public function getContainer(): ContainerBuilder
     {
         return $this->container;
     }

@@ -12,7 +12,7 @@ class ExportCommandTest extends TestCase
 {
     private static $exportCommand = null;
 
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         $containerBuilder = new ContainerBuilder();
         $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__));
@@ -22,7 +22,7 @@ class ExportCommandTest extends TestCase
         self::$exportCommand->setContainer($containerBuilder);
     }
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $outputFiles = ["crontab", "/tmp/chrnis_test_export"];
         foreach ($outputFiles as $file) {
@@ -32,7 +32,7 @@ class ExportCommandTest extends TestCase
         }
     }
 
-    public function testExecuteThrowsExceptionWhenConfigOptionNotSet() : void
+    public function testExecuteThrowsExceptionWhenConfigOptionNotSet(): void
     {
         $this->expectException(InvalidCommandInputException::class);
         $this->expectExceptionMessage("Option --config is missing.");
@@ -41,7 +41,7 @@ class ExportCommandTest extends TestCase
         $commandTester->execute([]);
     }
 
-    public function testExecuteWritesCrontabToDefaultFile() : void
+    public function testExecuteWritesCrontabToDefaultFile(): void
     {
         $commandTester = new CommandTester(self::$exportCommand);
         $commandTester->execute([
@@ -60,7 +60,7 @@ EOF;
         $this->assertStringContainsString($expected, $output);
     }
 
-    public function testExecuteWritesCrontabToFileGiven() : void
+    public function testExecuteWritesCrontabToFileGiven(): void
     {
         $commandTester = new CommandTester(self::$exportCommand);
         $commandTester->execute([

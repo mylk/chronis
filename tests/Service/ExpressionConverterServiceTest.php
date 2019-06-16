@@ -11,17 +11,17 @@ class ExpressionConverterServiceTest extends TestCase
 {
     private static $converter = null;
 
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         self::$converter = new ExpressionConverterService(new NaturalCronExpressionParser());
     }
 
-    public function testConvertThrowsExceptionWhenExpressionIsNull() : void
+    public function testConvertThrowsExceptionWhenExpressionIsInvalid(): void
     {
         $job = (new ConfigurationJob())
             ->setCommand("ls -la /tmp")
             ->setDescription("Lists /tmp")
-            ->setExpression(null)
+            ->setExpression("")
             ->setName("foo")
             ->setType("cron");
 
@@ -31,7 +31,7 @@ class ExpressionConverterServiceTest extends TestCase
         self::$converter->convert($job);
     }
 
-    public function testConvertReturnsCronJobWithConvertedExpressionWhenExpressionExists() : void
+    public function testConvertReturnsCronJobWithConvertedExpressionWhenExpressionExists(): void
     {
         $job = (new ConfigurationJob())
             ->setCommand("ls -la /tmp")

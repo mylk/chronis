@@ -4,7 +4,7 @@ namespace Chronis\Service;
 
 class TemplateService
 {
-    public function render($template, $data)
+    public function render(string $template, array $data): string
     {
         $templateContent = file_get_contents(sprintf("%s/../../templates/%s.tpl", __DIR__, $template));
 

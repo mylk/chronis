@@ -9,7 +9,7 @@ use Chronis\Exception\InvalidCommandInputException;
 
 class ExportCommand extends ContainerAwareCommand
 {
-    public function configure()
+    public function configure(): void
     {
         $this->setName("export")
             ->setDescription("Exports the crontab file")
@@ -18,7 +18,7 @@ class ExportCommand extends ContainerAwareCommand
             ->addOption("output", "o", InputOption::VALUE_OPTIONAL, "The output file.", "crontab");
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): void
     {
         $configPath = $input->getOption("config");
         $outputPath = $input->getOption("output");

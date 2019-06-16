@@ -12,14 +12,14 @@ class TemplateServiceTest extends TestCase
         self::$template = new TemplateService();
     }
 
-    public function testRenderReturnsStringWithoutPlaceholdersWhenEmptyData()
+    public function testRenderReturnsStringWithoutPlaceholdersWhenEmptyData(): void
     {
         $output = self::$template->render("cron", []);
         $expected = "# : \n \n\n";
         $this->assertEquals($expected, $output);
     }
 
-    public function testRenderReturnsStringWithoutPlaceholderWhenValueIsNull()
+    public function testRenderReturnsStringWithoutPlaceholderWhenValueIsNull(): void
     {
         $output = self::$template->render("cron", [
             "%name" => "foo",
@@ -32,7 +32,7 @@ class TemplateServiceTest extends TestCase
         $this->assertEquals($expected, $output);
     }
 
-    public function testRenderReturnsStringWithReplacedStringsWhenDataExist()
+    public function testRenderReturnsStringWithReplacedStringsWhenDataExist(): void
     {
         $output = self::$template->render("cron", [
             "%name" => "foo",
