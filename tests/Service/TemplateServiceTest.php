@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use Chronis\Exception\TemplateNotFoundException;
 use Chronis\Service\TemplateService;
 
 class TemplateServiceTest extends TestCase
@@ -10,6 +11,14 @@ class TemplateServiceTest extends TestCase
     public static function setUpBeforeClass() : void
     {
         self::$template = new TemplateService();
+    }
+
+    public function testRenderThrowsExceptionWhenTemplateNotFound(): void
+    {
+        $this->expectException(TemplateNotFoundException::class);
+        $this->expectExceptionMessage("Template named \"foo\" was not found.");
+
+        $output = self::$template->render("foo", []);
     }
 
     public function testRenderReturnsStringWithoutPlaceholdersWhenEmptyData(): void

@@ -1,5 +1,5 @@
 parameters:
-    version: 0.7.2
+    version: 0.7.3
 
 services:
     config_parser:
