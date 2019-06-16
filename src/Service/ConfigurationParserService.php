@@ -15,6 +15,7 @@ class ConfigurationParserService
         foreach ($data["jobs"] as $jobName => $jobDetails) {
             $jobObject = new ConfigurationJob();
             $jobObject->setName($jobName)
+                ->setType($jobDetails["type"])
                 ->setDescription($jobDetails["description"])
                 ->setExpression($jobDetails["expression"])
                 ->setCommand($jobDetails["command"]);

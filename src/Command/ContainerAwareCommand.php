@@ -6,11 +6,13 @@ use Symfony\Component\Console\Command\Command;
 
 abstract class ContainerAwareCommand extends Command
 {
-    private $container;
+    private $container = null;
 
     public function setContainer($container)
     {
         $this->container = $container;
+
+        return $this;
     }
 
     public function getContainer()
