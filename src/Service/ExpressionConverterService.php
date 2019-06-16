@@ -2,12 +2,13 @@
 
 namespace Chronis\Service;
 
+use BenTools\NaturalCronExpression\ParserException;
+use Chronis\Exception\ExpressionParseException;
 use Chronis\Model\CronJob;
 
 class ExpressionConverterService
 {
     private $expressionParser = null;
-
 
     public function __construct($expressionParser)
     {
@@ -16,7 +17,13 @@ class ExpressionConverterService
 
     public function convert($job)
     {
-        $expression = $this->expressionParser::fromString($job->getExpression());
+        try {
+            $expression = $this->expressionParser::fromString($job->getExpression());
+        } catch (ParserException $ex) {
+            throw new ExpressionParseException(
+                sprintf("Unable to parse expression \"%s\" of job named \"%s\".", $job->getExpression(), $job->getName())
+            );
+        }
 
         $cronJob = new CronJob();
         $cronJob->setCommand($job->getCommand())

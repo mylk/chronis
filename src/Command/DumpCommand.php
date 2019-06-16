@@ -2,10 +2,10 @@
 
 namespace Chronis\Command;
 
-use Symfony\Component\Console\Exception\InvalidOptionException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Chronis\Exception\InvalidCommandInputException;
 
 class DumpCommand extends ContainerAwareCommand
 {
@@ -21,7 +21,7 @@ class DumpCommand extends ContainerAwareCommand
     {
         $configPath = $input->getOption("config");
         if (!$configPath) {
-            throw new InvalidOptionException("Option --config is missing.");
+            throw new InvalidCommandInputException("Option --config is missing.");
         }
 
         $crontabGenerator = $this->getContainer()->get("crontab_generator");
