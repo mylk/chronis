@@ -13,7 +13,8 @@ class ExportCommand extends ContainerAwareCommand
     {
         $this->setName("export")
             ->setDescription("Exports the crontab file")
-            ->setHelp("Reads a configuration file that defines the jobs, converts them to a crontab and exports it to a file.")
+            ->setHelp("Reads a configuration file that defines the jobs, \
+                converts them to a crontab and exports it to a file.")
             ->addOption("config", "c", InputOption::VALUE_REQUIRED, "The input configuration file.", null)
             ->addOption("output", "o", InputOption::VALUE_OPTIONAL, "The output file.", "crontab");
     }
@@ -41,5 +42,7 @@ class ExportCommand extends ContainerAwareCommand
         }
 
         file_put_contents($outputPath, $data);
+
+        $output->writeln("Crontab successfully exported to file \"$outputPath\".");
     }
 }

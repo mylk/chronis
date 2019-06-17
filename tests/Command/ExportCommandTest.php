@@ -48,6 +48,8 @@ class ExportCommandTest extends TestCase
             "--config" => __DIR__ . "/../../config/chronis.example.yaml",
         ]);
 
+        $this->assertEquals("Crontab successfully exported to file \"crontab\".\n", $commandTester->getDisplay());
+
         $output = file_get_contents("crontab");
         $expected = <<<EOF
 # foo: Lists /tmp
@@ -67,6 +69,8 @@ EOF;
             "--config" => __DIR__ . "/../../config/chronis.example.yaml",
             "--output" => "/tmp/chronis_test_export"
         ]);
+
+        $this->assertEquals("Crontab successfully exported to file \"/tmp/chronis_test_export\".\n", $commandTester->getDisplay());
 
         $output = file_get_contents("/tmp/chronis_test_export");
         $expected = <<<EOF

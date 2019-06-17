@@ -13,7 +13,8 @@ class DumpCommand extends ContainerAwareCommand
     {
         $this->setName("dump")
             ->setDescription("Dumps the crontab file")
-            ->setHelp("Reads a configuration file that defines the jobs, converts them to a crontab and dumps it to the console.")
+            ->setHelp("Reads a configuration file that defines the jobs, \
+                converts them to a crontab and dumps it to the console.")
             ->addOption("config", "c", InputOption::VALUE_REQUIRED, "The configuration file input.", null);
     }
 
