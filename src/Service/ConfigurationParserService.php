@@ -9,7 +9,7 @@ class ConfigurationParserService
 {
     public function parse(string $configPath): array
     {
-        $data = Yaml::parseFile($configPath);
+        $data = (new Yaml)->parseFile($configPath);
 
         $jobs = [];
         foreach ($data["jobs"] as $jobName => $jobDetails) {

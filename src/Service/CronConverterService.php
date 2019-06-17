@@ -23,7 +23,11 @@ class CronConverterService
             $expression = $this->expressionParser::fromString($job->getExpression());
         } catch (ParserException $ex) {
             throw new ExpressionParseException(
-                sprintf("Unable to parse expression \"%s\" of job named \"%s\".", $job->getExpression(), $job->getName())
+                sprintf(
+                    "Unable to parse expression \"%s\" of job named \"%s\".",
+                    $job->getExpression(),
+                    $job->getName()
+                )
             );
         }
 
