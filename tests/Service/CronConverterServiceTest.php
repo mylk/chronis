@@ -5,15 +5,15 @@ use PHPUnit\Framework\TestCase;
 use Chronis\Exception\ExpressionParseException;
 use Chronis\Model\ConfigurationJob;
 use Chronis\Model\CronJob;
-use Chronis\Service\ExpressionConverterService;
+use Chronis\Service\CronConverterService;
 
-class ExpressionConverterServiceTest extends TestCase
+class CronConverterServiceTest extends TestCase
 {
     private static $converter = null;
 
     public static function setUpBeforeClass(): void
     {
-        self::$converter = new ExpressionConverterService(new NaturalCronExpressionParser());
+        self::$converter = new CronConverterService(new NaturalCronExpressionParser());
     }
 
     public function testConvertThrowsExceptionWhenExpressionIsInvalid(): void

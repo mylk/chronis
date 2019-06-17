@@ -1,5 +1,5 @@
 parameters:
-    version: 0.7.3
+    version: 0.7.4
 
 services:
     config_parser:
@@ -9,10 +9,10 @@ services:
         class: Chronis\Service\CrontabGeneratorService
         arguments:
             - "@config_parser"
-            - "@expression_converter"
+            - "@cron_converter"
 
-    expression_converter:
-        class: Chronis\Service\ExpressionConverterService
+    cron_converter:
+        class: Chronis\Service\CronConverterService
         arguments:
             - "@expression_parser"
 

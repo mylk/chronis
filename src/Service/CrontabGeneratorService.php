@@ -5,14 +5,14 @@ namespace Chronis\Service;
 class CrontabGeneratorService
 {
     private $configParser;
-    private $expressionConverter;
+    private $cronConverter;
 
     public function __construct(
         ConfigurationParserService $configParser,
-        ExpressionConverterService $expressionConverter
+        CronConverterService $cronConverter
     ) {
         $this->configParser = $configParser;
-        $this->expressionConverter = $expressionConverter;
+        $this->cronConverter = $cronConverter;
     }
 
     public function generate(string $configPath): array
@@ -21,7 +21,7 @@ class CrontabGeneratorService
 
         $cronJobs = [];
         foreach ($jobs as $job) {
-            $cronJobs[] = $this->expressionConverter->convert($job);
+            $cronJobs[] = $this->cronConverter->convert($job);
         }
 
         return $cronJobs;

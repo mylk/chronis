@@ -8,7 +8,7 @@ use Chronis\Exception\ExpressionParseException;
 use Chronis\Model\ConfigurationJob;
 use Chronis\Model\CronJob;
 
-class ExpressionConverterService
+class CronConverterService
 {
     private $expressionParser = null;
 

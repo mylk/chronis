@@ -4,8 +4,8 @@ use BenTools\NaturalCronExpression\NaturalCronExpressionParser;
 use PHPUnit\Framework\TestCase;
 use Chronis\Model\CronJob;
 use Chronis\Service\ConfigurationParserService;
+use Chronis\Service\CronConverterService;
 use Chronis\Service\CrontabGeneratorService;
-use Chronis\Service\ExpressionConverterService;
 
 class CrontabGeneratorServiceTest extends TestCase
 {
@@ -14,8 +14,8 @@ class CrontabGeneratorServiceTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         $configurationParser = new ConfigurationParserService();
-        $expressionConverter = new ExpressionConverterService(new NaturalCronExpressionParser());
-        self::$generator = new CrontabGeneratorService($configurationParser, $expressionConverter);
+        $cronConverter = new CronConverterService(new NaturalCronExpressionParser());
+        self::$generator = new CrontabGeneratorService($configurationParser, $cronConverter);
     }
 
     public function testGeneratorReturnsCronJobs(): void
