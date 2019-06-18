@@ -20,12 +20,26 @@ To include `Chronis` in your PHP project:
 composer require mylk/chronis
 ```
 
+You can also install `Chronis` as a global command and not as a project's dependency:
+
+```
+composer global require mylk/chronis
+```
+
 ### Run
 
 To execute `Chronis` and get some help: 
 
 ```
 vendor/bin/chronis list
+```
+
+To execute `Chronis` when installed as a global command, first make sure that
+`$HOME/.config/composer/vendor/bin/` is in your system's `$PATH`. Then you can
+execute `Chronis` from anywhere:
+
+```
+chronis list
 ```
 
 Then, you will need to have a `yaml` file to define your cron jobs. You can begin with
