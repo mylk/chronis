@@ -7,5 +7,5 @@ check-syntax:
 check-style:
 	vendor/bin/phpcs --standard=PSR2 src/
 
-chekc-quality:
+check-quality:
 	vendor/bin/phpmd src/ text cleancode,codesize,controversial,design,naming,unusedcode
