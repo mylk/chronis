@@ -1,16 +1,42 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__ . "/vendor/autoload.php";
-
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Application;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
+// find the location of "vendor/", for both standalone and dependency installations to work
+$vendorDirPath = null;
+foreach ([__DIR__ . "/../..", __DIR__ . "/..", __DIR__ . "/vendor"] as $dir) {
+    if (file_exists("$dir/autoload.php")) {
+        $vendorDirPath = $dir;
+        break;
+    }
+}
+if (!$vendorDirPath) {
+    fwrite(STDERR, "Dependencies could not be found. Use composer to install them.\n");
+    die(1);
+}
+require "$vendorDirPath/autoload.php";
+
+// find the location of the project in order to read the service.yml,
+// for both standalone and dependency installations to work
+$projectPath = null;
+foreach (["$vendorDirPath/..", "$vendorDirPath/mylk/chronis"] as $dir) {
+    if (file_exists("$dir/config/services.yaml")) {
+        $projectPath = $dir;
+        break;
+    }
+}
+if (!$projectPath) {
+    fwrite(STDERR, "Could not find Chronis' source code directory.\n");
+    die(1);
+}
+
 $containerBuilder = new ContainerBuilder();
 $loader = new YamlFileLoader($containerBuilder, new FileLocator(__DIR__));
-$loader->load("config/services.yaml");
+$loader->load("$projectPath/config/services.yaml");
 
 $dump = new Chronis\Command\DumpCommand();
 $dump->setContainer($containerBuilder);
