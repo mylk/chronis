@@ -108,7 +108,7 @@ make check-quality
 
 ## Authors
 
-See the list of [contributors](https://github.com/your/project/contributors).
+See the list of [contributors](https://github.com/mylk/chronis/contributors).
 
 ## License
 
