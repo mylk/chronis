@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1",
         "symfony/console": "^4.3",
         "bentools/natural-cron-expression": "^1.0",
         "symfony/yaml": "^4.3",
